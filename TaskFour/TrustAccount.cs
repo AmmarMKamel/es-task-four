@@ -1,6 +1,6 @@
 ﻿namespace TaskFour
 {
-    internal class TrustAccount: Account
+    internal class TrustAccount : Account
     {
         public double InterestRate { get; set; }
         private int WithdrawalsLimit { get; set; } = 3;
@@ -23,9 +23,12 @@
             if (amountAfterInterestRate > 0.2 * Balance)
                 return false;
 
-            WithdrawalsLimit--;
+            bool result = base.Withdraw(amountAfterInterestRate);
 
-            return base.Withdraw(amountAfterInterestRate);
+            if (!result) return false;
+
+            WithdrawalsLimit--;
+            return true;
         }
 
         public override bool Deposit(double amount)

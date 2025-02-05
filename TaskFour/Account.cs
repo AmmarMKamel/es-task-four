@@ -35,5 +35,10 @@
         {
             return $"{Name}'s Account, Balance: {Balance}";
         }
+
+        public static double operator +(Account left, Account right)
+        {
+            return left.Balance + right.Balance;
+        }
     }
 }
